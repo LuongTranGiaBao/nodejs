@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Công Ty TNHH Bảo KUN Channel</h1>
+    <form action="/save" method="post" enctype="multipart/form-data">
+        <input type="text" name="maCongNhan" id="maCongNhan" placeholder="Nhap ma cong nhan">
+        <br/>
+        <input type="text" name="tenCongNhan" id="tenCongNhan" placeholder="Nhap ten cong nhan">
+        <br/>
+        <input type="text" name="soDienThoai" id="soDienThoai" placeholder="Nhap so dien thoai">
+        <br/>
+        <input type="text" name="diaChi" id="diaChi" placeholder="Nhap dia Chi">
+        <br/>    
+        <input type="file" name="image" id="image" accept="image/*">
+        <br/>
+        <input type="submit" value="Them">
+        <br/>
+    </form>
+
+    <form action="/delete" method="post" enctype="multipart/form-data">
+        <table border="true">
+            <tr>
+                <th>Ma Cong Nhan </th>
+                <th>Ten Cong Nhan </th>
+                <th>So Dien Thoai </th>
+                <th>Dia Chi </th>
+                <th>Hinh Anh </th>
+                <th>Chon </th>
+            </tr>
+            <% for(let i=0; i< data.length; i++) {%>
+                <tr>
+                    <td><%= data[i].maCongNhan %></td>
+                    <td><%= data[i].tenCongNhan %></td>
+                    <td><%= data[i].soDienThoai %></td>
+                    <td><%= data[i].diaChi %></td>
+                    <td><img src="<%= data[i].image %>" alt="<%= data[i].maCongNhan %>" width="48" height="48"></td>
+                    <td><input type="checkbox" name="<%= data[i].maCongNhan %>" id="<%= data[i].maCongNhan %>"></td>
+                </tr>
+            <% } %>
+        </table>
+        <input type="submit" value="Xoa">
+    </form>
+</body>
+</html>
